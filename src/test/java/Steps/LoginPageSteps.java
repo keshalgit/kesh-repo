@@ -13,7 +13,7 @@ public class LoginPageSteps {
 
     @Given("user is on login page")
     public void userIsOnLoginPage() {
-        DriverFactory.getDriver().get("https://www.saucedemo.com/");
+        DriverFactory.getDriver().get(loginPage.getLoginPageURL());
     }
 
     @When("user gets the title of the page")
@@ -25,5 +25,25 @@ public class LoginPageSteps {
     @Then("page title should be {string}")
     public void pageTitleShouldBe(String expLoginPageTitle) {
         Assert.assertTrue(title.contains(expLoginPageTitle));
+    }
+
+    @Then("user enter the username as {string}")
+    public void userEnterTheUsernameAs(String uN) {
+        loginPage.enterUserName(uN);
+    }
+
+    @When("user enter the password as {string}")
+    public void userEnterThePasswordAs(String pw) {
+        loginPage.enterPassword(pw);
+    }
+
+    @Then("user clicks on the sign in button")
+    public void userClicksOnTheSignInButton() {
+        loginPage.clickOnTheLoginBtn();
+    }
+
+    @When("user checks the page title is {string}")
+    public void userChecksThePageTitleIs(String expLoggedPageTitle) {
+        Assert.assertTrue(loginPage.getLoggedPageTitle().contains(expLoggedPageTitle));
     }
 }
