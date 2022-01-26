@@ -36,7 +36,6 @@ public class DriverFactory {
             caps.setCapability("browser_version", "15.1");
             caps.setCapability("browserstack.local", "false");
 
-
             URL bsURL = new URL(bStackURL);
             tlDriver.set(new RemoteWebDriver(bsURL, caps));
         } else {
