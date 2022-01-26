@@ -99,7 +99,7 @@
                 <version>${maven.surefire.version}</version>
                 <configuration>
                     <includes>
-                        <!-- <include>**/TestRunner.java</include> -->
+                        <include>**/TestRunner.java</include>
                     </includes>
                 </configuration>
             </plugin>
