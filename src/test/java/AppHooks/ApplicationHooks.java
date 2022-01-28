@@ -38,12 +38,12 @@ public class ApplicationHooks {
         driver = driverFactory.init_driver(browserName, bsUrl);
     }
 
-    @After(order = 0)
+    @After(order = 1)
     public void quitBrowser() {
         driver.quit();
     }
 
-    @After(order = 1)
+    @After(order = 2)
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {
             String ssName = scenario.getName().replaceAll("", "_");
