@@ -10,7 +10,7 @@ import java.nio.charset.StandardCharsets;
 
 public class JsonCreator {
 
-    public void sendToAPI(String jsonRes){
+    public void sendToAPI(String jsonRes) {
         URL url;
         {
             try {
@@ -20,10 +20,9 @@ public class JsonCreator {
                 con.setRequestProperty("Content-Type", "application/json; utf-8");
                 con.setRequestProperty("Accept", "application/json");
                 con.setDoOutput(true);
-                String jsonInputString = jsonRes;
 
                 try (OutputStream os = con.getOutputStream()) {
-                    byte[] input = jsonInputString.getBytes(StandardCharsets.UTF_8);
+                    byte[] input = jsonRes.getBytes(StandardCharsets.UTF_8);
                     os.write(input, 0, input.length);
                 }
 
@@ -34,7 +33,7 @@ public class JsonCreator {
                     while ((responseLine = br.readLine()) != null) {
                         response.append(responseLine.trim());
                     }
-                    System.out.println(response);
+                    System.out.println("Json Response : " + response);
                 }
 
             } catch (Exception e) {
@@ -43,7 +42,7 @@ public class JsonCreator {
         }
     }
 
-    public JSONObject jsonRequestCreator(String instance,int status) {
+    public JSONObject jsonRequestCreator(String instance, int status) {
         //Creating a JSONObject object
         JSONObject jsonObject = new JSONObject();
         //Inserting key-value pairs into the json object
@@ -53,7 +52,7 @@ public class JsonCreator {
         attributesObject.put("instance-id", instance);
         attributesObject.put("exit-code", status);
         attributesObject.put("automated-execution-output", "THIS IS MY OUTPUT");
-        jsonObject.put("attributes",attributesObject);
+        jsonObject.put("attributes", attributesObject);
 
         //Creating a json array
         JSONArray array = new JSONArray();
@@ -64,7 +63,7 @@ public class JsonCreator {
         JSONObject mainJsonObject = new JSONObject();
         mainJsonObject.put("data", array);
 
-        System.out.println(mainJsonObject);
+        System.out.println("Json Request : " + mainJsonObject);
         return mainJsonObject;
     }
 }
