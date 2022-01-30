@@ -10,6 +10,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import qa.factory.DriverFactory;
 import qa.util.ConfigReader;
+import qa.util.JsonCreator;
 
 import java.net.MalformedURLException;
 import java.util.Properties;
@@ -45,14 +46,17 @@ public class ApplicationHooks {
 
     @After(order = 2)
     public void getScenarioForAutomation(Scenario scn){
+        int status;
         String[] instanceID = scn.getName().split("-");
-        System.out.println("xxxxxxxxxxxxx"+instanceID[1]);
+        System.out.println("instance ID : "+instanceID[1]);
         if (scn.isFailed()){
-            System.out.println("xxxxxxxxxxxxx------Failed");
+            status = 1;
         }
         else {
-            System.out.println("xxxxxxxxxxxxx------Passed");
+            status = 0;
         }
+        JsonCreator j = new JsonCreator();
+        j.sendToAPI(j.jsonRequestCreator(instanceID[1],status).toString());
     }
 
     @After(order = 3)
