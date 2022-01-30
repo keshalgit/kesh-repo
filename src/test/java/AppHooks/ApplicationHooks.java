@@ -39,11 +39,23 @@ public class ApplicationHooks {
     }
 
     @After(order = 1)
-    public void quitBrowser() {
+    public void quitBrowser(Scenario scn) {
         driver.quit();
     }
 
     @After(order = 2)
+    public void getScenarioForAutomation(Scenario scn){
+        String[] instanceID = scn.getName().split("-");
+        System.out.println("xxxxxxxxxxxxx"+instanceID[1]);
+        if (scn.isFailed()){
+            System.out.println("xxxxxxxxxxxxx------Failed");
+        }
+        else {
+            System.out.println("xxxxxxxxxxxxx------Passed");
+        }
+    }
+
+    @After(order = 3)
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {
             String ssName = scenario.getName().replaceAll("", "_");
