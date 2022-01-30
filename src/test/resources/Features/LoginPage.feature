@@ -11,4 +11,4 @@ Feature: Login page feature
     Then user enter the username as "standard_user"
     When user enter the password as "secret_sauce"
     Then user clicks on the sign in button
-    When user checks the page title is "Swag Labss"
+    When user checks the page title is "Swag Labs"

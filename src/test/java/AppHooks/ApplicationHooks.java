@@ -45,18 +45,17 @@ public class ApplicationHooks {
     }
 
     @After(order = 2)
-    public void getScenarioForAutomation(Scenario scn){
+    public void getScenarioForAutomation(Scenario scn) {
         int status;
         String[] instanceID = scn.getName().split("-");
-        System.out.println("instance ID : "+instanceID[1]);
-        if (scn.isFailed()){
+        System.out.println("instance ID : " + instanceID[1]);
+        if (scn.isFailed()) {
             status = 1;
-        }
-        else {
+        } else {
             status = 0;
         }
         JsonCreator j = new JsonCreator();
-        j.sendToAPI(j.jsonRequestCreator(instanceID[1],status).toString());
+        j.sendToAPI(j.jsonRequestCreator(instanceID[1], status).toString());
     }
 
     @After(order = 3)
