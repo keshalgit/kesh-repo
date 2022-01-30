@@ -16,7 +16,7 @@ import java.io.IOException;
                 "rerun:target/rerun-scenarios/failed_scenarios_rerun.txt"},
         monochrome = false,
         glue = {"Steps", "AppHooks"},
-        tags = "@Smoke",
+        //tags = "@Smoke",
         features = {"src/test/resources/Features/LoginPage.feature"}
 )
 
