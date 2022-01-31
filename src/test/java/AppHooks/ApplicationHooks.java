@@ -32,6 +32,12 @@ public class ApplicationHooks {
     }
 
     @Before(order = 2)
+    public void getProjectIdAndAPIKey() {
+        JsonCreator j1 = new JsonCreator();
+        j1.getPractiTestDetails(prop.getProperty("practitest_projectid"), prop.getProperty("practitest_apikey"));
+    }
+
+    @Before(order = 3)
     public void launchBrowser() throws MalformedURLException {
         String bsUrl = "https://" + prop.getProperty("browser_stack_username") + ":" + prop.getProperty("browser_stack_accesskey") + "@hub.browserstack.com/wd/hub";
         String browserName = prop.getProperty("browser");
