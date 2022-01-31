@@ -9,12 +9,18 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 public class JsonCreator {
+    public static String projID, pAPIKey;
+
+    public void getPractiTestDetails(String projectID, String pApiKey) {
+        projID = projectID;
+        pAPIKey = pApiKey;
+    }
 
     public void sendToAPI(String jsonRes) {
         URL url;
         {
             try {
-                url = new URL("https://api.practitest.com/api/v2/projects/21298/runs.json?api_token=7220a5baf48665f3dc203a49308915ba0a6873ee");
+                url = new URL("https://api.practitest.com/api/v2/projects/" + projID + "/runs.json?api_token=" + pAPIKey + "");
                 HttpURLConnection con = (HttpURLConnection) url.openConnection();
                 con.setRequestMethod("POST");
                 con.setRequestProperty("Content-Type", "application/json; utf-8");
