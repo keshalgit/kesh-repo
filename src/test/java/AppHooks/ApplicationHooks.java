@@ -12,6 +12,7 @@ import qa.factory.DriverFactory;
 import qa.util.ConfigReader;
 import qa.util.JsonCreator;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Properties;
 
@@ -51,7 +52,7 @@ public class ApplicationHooks {
     }
 
     @After(order = 2)
-    public void getScenarioForAutomation(Scenario scn) {
+    public void getScenarioForAutomation(Scenario scn) throws IOException {
         int status;
         String[] instanceID = scn.getName().split("-");
         System.out.println("instance ID : " + instanceID[1]);
@@ -61,7 +62,8 @@ public class ApplicationHooks {
             status = 0;
         }
         JsonCreator j = new JsonCreator();
-        j.sendToAPI(j.jsonRequestCreator(instanceID[1], status).toString());
+        //j.jsonRequestCreator(instanceID[1], status);
+        j.jsonRequestCreator(instanceID[1], status);
     }
 
     @After(order = 3)
