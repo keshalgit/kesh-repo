@@ -12,9 +12,9 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class JsonCreator {
+public class PractiTestJsonCreator {
     public static String projID, pAPIKey;
-    String reqString;
+    //String reqString;
 
     public void getPractiTestDetails(String projectID, String pApiKey) {
         projID = projectID;
@@ -119,7 +119,7 @@ public class JsonCreator {
         JSONObject currentJsonObject = new JSONObject();
         currentJsonObject.put("data", array);
 
-        System.out.println("asdasdasdasdasdads        "+currentJsonObject);
+        System.out.println("asdasdasdasdasdads        " + currentJsonObject);
 
         try (FileWriter file = new FileWriter("target/practitest-json/pt.json")) {
             file.write(currentJsonObject.toJSONString());

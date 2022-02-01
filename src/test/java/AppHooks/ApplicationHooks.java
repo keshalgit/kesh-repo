@@ -10,7 +10,7 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import qa.factory.DriverFactory;
 import qa.util.ConfigReader;
-import qa.util.JsonCreator;
+import qa.util.PractiTestJsonCreator;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -34,7 +34,7 @@ public class ApplicationHooks {
 
     @Before(order = 2)
     public void getProjectIdAndAPIKey() {
-        JsonCreator j1 = new JsonCreator();
+        PractiTestJsonCreator j1 = new PractiTestJsonCreator();
         j1.getPractiTestDetails(prop.getProperty("practitest_projectid"), prop.getProperty("practitest_apikey"));
     }
 
@@ -61,7 +61,7 @@ public class ApplicationHooks {
         } else {
             status = 0;
         }
-        JsonCreator j = new JsonCreator();
+        PractiTestJsonCreator j = new PractiTestJsonCreator();
         //j.jsonRequestCreator(instanceID[1], status);
         j.jsonRequestCreator(instanceID[1], status);
     }
