@@ -3,7 +3,6 @@ package qa.util;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import org.json.simple.JSONObject;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -91,11 +90,11 @@ public class PractiTestJsonCreator {
         return new String(Files.readAllBytes(Paths.get("target/practitest-json/pt.json")));
     }
 
-    public int jsonObjectCount() throws IOException {
+    /*public int jsonObjectCount() throws IOException {
         JsonObject jsonObject = (JsonObject) new JsonParser().parse(readJsonFile());
         JsonArray dataObject = jsonObject.getAsJsonArray("data");
         return dataObject.size();
-    }
+    }*/
 
     public String newJsonCreator(String instance, int status) throws IOException {
         /*JsonObject PreviousJsonObj = (JsonObject) new JsonParser().parse(readJsonFile());
@@ -116,13 +115,13 @@ public class PractiTestJsonCreator {
         JsonArray array = new JsonArray();
         array.add(jsonObj);
 
-        JSONObject currentJsonObject = new JSONObject();
-        currentJsonObject.put("data", array);
+        JsonObject currentJsonObject = new JsonObject();
+        currentJsonObject.add("data", array);
 
         System.out.println("asdasdasdasdasdads        " + currentJsonObject);
 
         try (FileWriter file = new FileWriter("target/practitest-json/pt.json")) {
-            file.write(currentJsonObject.toJSONString());
+            file.write(currentJsonObject.toString());
             file.flush();
         } catch (IOException e) {
             e.printStackTrace();
