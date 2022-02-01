@@ -1,22 +1,35 @@
 package qa.util;
 
-import org.json.simple.JSONArray;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import org.json.simple.JSONObject;
 
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class JsonCreator {
     public static String projID, pAPIKey;
+    String reqString;
 
     public void getPractiTestDetails(String projectID, String pApiKey) {
         projID = projectID;
         pAPIKey = pApiKey;
+
+        if (!Files.exists(Paths.get("target/practitest-json/pt.json"))) {
+            File pjDirectory = new File("target", "practitest-json");
+            pjDirectory.mkdir();
+            defaultJsonWriter();
+        } else {
+            defaultJsonWriter();
+        }
     }
 
-    public void sendToAPI(String jsonRes) {
+    public void sendToAPI(String jsonReq) {
         URL url;
         {
             try {
@@ -28,7 +41,7 @@ public class JsonCreator {
                 con.setDoOutput(true);
 
                 try (OutputStream os = con.getOutputStream()) {
-                    byte[] input = jsonRes.getBytes(StandardCharsets.UTF_8);
+                    byte[] input = jsonReq.getBytes(StandardCharsets.UTF_8);
                     os.write(input, 0, input.length);
                 }
 
@@ -41,35 +54,79 @@ public class JsonCreator {
                     }
                     System.out.println("Json Response : " + response);
                 }
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public JSONObject jsonRequestCreator(String instance, int status) {
+    public void jsonRequestCreator(String instance, int status) throws IOException {
+        /*try {
+            if (jsonObjectCount() <= 2) {
+                reqString = newJsonCreator(instance, status);
+                if (jsonObjectCount() == 2) {
+                    sendToAPI(reqString);
+                    defaultJsonWriter();
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }*/
+        sendToAPI(newJsonCreator(instance, status));
+    }
+
+    public void defaultJsonWriter() {
+        File yourFile = new File("target/practitest-json/pt.json");
+        try {
+            yourFile.createNewFile();
+            PrintWriter writer = new PrintWriter("target/practitest-json/pt.json", "UTF-8");
+            writer.println("{\"data\":[]}");
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String readJsonFile() throws IOException {
+        return new String(Files.readAllBytes(Paths.get("target/practitest-json/pt.json")));
+    }
+
+    public int jsonObjectCount() throws IOException {
+        JsonObject jsonObject = (JsonObject) new JsonParser().parse(readJsonFile());
+        JsonArray dataObject = jsonObject.getAsJsonArray("data");
+        return dataObject.size();
+    }
+
+    public String newJsonCreator(String instance, int status) throws IOException {
+        /*JsonObject PreviousJsonObj = (JsonObject) new JsonParser().parse(readJsonFile());
+        JsonArray array = PreviousJsonObj.getAsJsonArray("data");*/
+
         //Creating a JSONObject object
-        JSONObject jsonObject = new JSONObject();
+        JsonObject jsonObj = new JsonObject();
         //Inserting key-value pairs into the json object
-        jsonObject.put("type", "instances");
+        jsonObj.addProperty("type", "instances");
 
-        JSONObject attributesObject = new JSONObject();
-        attributesObject.put("instance-id", instance);
-        attributesObject.put("exit-code", status);
-        attributesObject.put("automated-execution-output", "THIS IS MY OUTPUT");
-        jsonObject.put("attributes", attributesObject);
+        JsonObject attributesObject = new JsonObject();
+        attributesObject.addProperty("instance-id", instance);
+        attributesObject.addProperty("exit-code", status);
+        attributesObject.addProperty("automated-execution-output", "THIS IS MY OUTPUT");
+        attributesObject.addProperty("run-duration", "00:00:30");
+        jsonObj.add("attributes", attributesObject);
 
-        //Creating a json array
-        JSONArray array = new JSONArray();
-        array.add(jsonObject);
+        JsonArray array = new JsonArray();
+        array.add(jsonObj);
 
+        JSONObject currentJsonObject = new JSONObject();
+        currentJsonObject.put("data", array);
 
-        //Adding array to the json object
-        JSONObject mainJsonObject = new JSONObject();
-        mainJsonObject.put("data", array);
+        System.out.println("asdasdasdasdasdads        "+currentJsonObject);
 
-        System.out.println("Json Request : " + mainJsonObject);
-        return mainJsonObject;
+        try (FileWriter file = new FileWriter("target/practitest-json/pt.json")) {
+            file.write(currentJsonObject.toJSONString());
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return readJsonFile();
     }
 }
