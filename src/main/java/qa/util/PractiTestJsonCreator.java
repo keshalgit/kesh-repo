@@ -118,8 +118,6 @@ public class PractiTestJsonCreator {
         JsonObject currentJsonObject = new JsonObject();
         currentJsonObject.add("data", array);
 
-        System.out.println("asdasdasdasdasdads        " + currentJsonObject);
-
         try (FileWriter file = new FileWriter("target/practitest-json/pt.json")) {
             file.write(currentJsonObject.toString());
             file.flush();
