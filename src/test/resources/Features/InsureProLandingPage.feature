@@ -3,7 +3,7 @@ Feature: InsurePro landing page feature
   @Smoke
   Scenario: Verify the elements on the InsurePro landing page-xxxxxxx
     Given user is on insurepro landing page
-    When user gets the title of the insurepro landing page page
+    When user gets the title of the insurepro landing page
     When insurepro landing page title should be "InsurePro"
     And insurepro landing page should contain "swapable" panel
     And insurepro landing page should contain "Become Complaint" button

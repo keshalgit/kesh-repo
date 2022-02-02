@@ -11,8 +11,8 @@ public class InsureProLandingPageSteps {
     public void userIsOnInsureproLandingPage() {
     }
 
-    @When("user gets the title of the insurepro landing page page")
-    public void userGetsTheTitleOfTheInsureproLandingPagePage() {
+    @When("user gets the title of the insurepro landing page")
+    public void userGetsTheTitleOfTheInsureproLandingPage() {
     }
 
     @When("insurepro landing page title should be {string}")
