@@ -14,9 +14,11 @@ public class DataRockPageSteps {
     @When("datarock page title should be {string}")
     public void datarock_page_title_should_be(String string) {
     }
+
     @And("datarock page should contain {string} button")
     public void datarock_page_should_contain_button(String string) {
     }
+
     @Then("datarock page should contain {string} link")
     public void datarock_page_should_contain_link(String string) {
     }
