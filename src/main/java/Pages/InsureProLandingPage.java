@@ -24,11 +24,20 @@ public class InsureProLandingPage {
         return driver.getTitle();
     }
 
-    public void swapTheBannerPanelToTheLeftSide(){}
+    public String getBecomeCompliantButtonText() {
+        return "Become Compliant";
+    }
 
-    public void swapTheBannerPanelToTheRightSide(){}
+    public String swapTheBannerPanelToTheLeftSide() {
+        return "Get Insurance Coverage";
+    }
 
-    public void clickOnTheBecomeCompliantButton(){}
+    public String swapTheBannerPanelToTheRightSide() {
+        return "Insurance Verification";
+    }
+
+    public void clickOnTheBecomeCompliantButton() {
+    }
 
     public String getDataRockPageTitle() {
         return driver.getTitle();
