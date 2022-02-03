@@ -45,6 +45,7 @@ public class GeneralLiabilityPageSteps {
 
     @Then("select the insurance plan Annually option")
     public void selectTheInsurancePlanAnnuallyOption() {
+
     }
 
     @Then("select the insurance plan I Already Have this Insurance option")
