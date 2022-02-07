@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import qa.factory.DriverFactory;
 import qa.util.ConfigReader;
 import qa.util.PractiTestJsonCreator;
+import qa.util.QMetryJsonBinder;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -34,8 +35,8 @@ public class ApplicationHooks {
 
     @Before(order = 2)
     public void getProjectIdAndAPIKey() {
-        PractiTestJsonCreator j1 = new PractiTestJsonCreator();
-        j1.getPractiTestDetails(prop.getProperty("practitest_projectid"), prop.getProperty("practitest_apikey"));
+        /*PractiTestJsonCreator j1 = new PractiTestJsonCreator();
+        j1.getPractiTestDetails(prop.getProperty("practitest_projectid"), prop.getProperty("practitest_apikey"));*/
     }
 
     @Before(order = 3)
@@ -51,7 +52,7 @@ public class ApplicationHooks {
         driver.quit();
     }
 
-    @After(order = 2)
+    /*@After(order = 2)
     public void getScenarioForAutomation(Scenario scn) throws IOException {
         int status;
         String[] instanceID = scn.getName().split("-");
@@ -64,9 +65,9 @@ public class ApplicationHooks {
         PractiTestJsonCreator j = new PractiTestJsonCreator();
         //j.jsonRequestCreator(instanceID[1], status);
         j.jsonRequestCreator(instanceID[1], status);
-    }
+    }*/
 
-    @After(order = 3)
+    @After(order = 2)
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {
             String ssName = scenario.getName().replaceAll("", "_");

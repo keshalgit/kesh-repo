@@ -1,13 +1,13 @@
 Feature: Login page feature
 
   @Smoke
-  Scenario: Login page title-48671876
+  Scenario: Login page title
     Given user is on login page
     When user gets the title of the page
     Then page title should be "Swag Labs"
 
   @Smoke
-  Scenario: Login with valid username and password-48671877
+  Scenario: Login with valid username and password
     Given user is on login page
     Then user enter the username as "standard_user"
     When user enter the password as "secret_sauce"
