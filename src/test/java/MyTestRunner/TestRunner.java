@@ -19,8 +19,8 @@ import java.util.Properties;
                 "rerun:target/rerun-scenarios/failed_scenarios_rerun.txt"},
         monochrome = false,
         glue = {"Steps", "AppHooks"},
-        tags = "@Smoke",
-        features = {"src/test/resources/Features/LoginPage.feature"}
+        //tags = "@Smoke",
+        features = {"src/test/resources/Features/InsureProLandingPage.feature"}
 )
 
 public class TestRunner extends AbstractTestNGCucumberTests {

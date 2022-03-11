@@ -7,8 +7,9 @@ public class InsureProLandingPage {
     private WebDriver driver;
 
     //1. By Locators:
-    private By landingSwapPanel = By.id("");
-    private By becomeCompliantButton = By.id("");
+    private By languageLink = By.xpath("//*[@id=\"root\"]/section/footer/div/button");
+    private By quoteButton = By.xpath("//*[@id=\"root\"]/section/footer/button");
+    private By namePageTitle = By.xpath("//*[@id=\"root\"]/section/div/div[1]");
 
     //2. Constructor of the page class:
     public InsureProLandingPage(WebDriver driver) {
@@ -17,29 +18,26 @@ public class InsureProLandingPage {
 
     //3. Page Actions: features(behavior) of the page the form of methods:
     public String setInsureProLandingPageURL() {
-        return "https://www.saucedemo.com/";
+        return "https://app.dev.insurepro.com";
     }
 
     public String getInsureProLandingPageTitle() {
         return driver.getTitle();
     }
 
-    public String getBecomeCompliantButtonText() {
-        return "Become Compliant";
+    public String getTheLanguageLinkText() {
+        return driver.findElement(languageLink).getText();
     }
 
-    public String swapTheBannerPanelToTheLeftSide() {
-        return "Get Insurance Coverage";
+    public String getTheQuoteButtonText() {
+        return driver.findElement(quoteButton).getText();
     }
 
-    public String swapTheBannerPanelToTheRightSide() {
-        return "Insurance Verification";
+    public void clickOnTheQuoteButton() {
+        driver.findElement(quoteButton).click();
     }
 
-    public void clickOnTheBecomeCompliantButton() {
-    }
-
-    public String getDataRockPageTitle() {
-        return driver.getTitle();
+    public String getNamePageTitle() {
+        return driver.findElement(namePageTitle).getText();
     }
 }
