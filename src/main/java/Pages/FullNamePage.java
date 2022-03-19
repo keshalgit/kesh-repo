@@ -41,4 +41,11 @@ public class FullNamePage {
     public void clickOnTheContinueBtnOnFullNamePage() {
         driver.findElement(conBtn).click();
     }
+
+    public  void getZipcodePage(){
+        driver.get("https://app.dev.insurepro.com");
+        driver.findElement(By.xpath("//*[@id=\"root\"]/section/footer/button")).click();
+        driver.findElement(fullNameTxtBox).sendKeys("Roy Miller");
+        driver.findElement(conBtn).click();
+    }
 }
