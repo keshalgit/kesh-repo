@@ -20,7 +20,7 @@ import java.util.Properties;
         monochrome = false,
         glue = {"Steps", "AppHooks"},
         //tags = "@Smoke",
-        features = {"src/test/resources/Features/FullNamePage.feature"}
+        features = {"src/test/resources/Features/ZipCodePage.feature"}
 )
 
 public class TestRunner extends AbstractTestNGCucumberTests {
