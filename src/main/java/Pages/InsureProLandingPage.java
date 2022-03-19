@@ -9,7 +9,6 @@ public class InsureProLandingPage {
     //1. By Locators:
     private By languageLink = By.xpath("//*[@id=\"root\"]/section/footer/div/button");
     private By quoteButton = By.xpath("//*[@id=\"root\"]/section/footer/button");
-    private By namePageTitle = By.xpath("//*[@id=\"root\"]/section/div/div[1]");
 
     //2. Constructor of the page class:
     public InsureProLandingPage(WebDriver driver) {
@@ -38,6 +37,11 @@ public class InsureProLandingPage {
     }
 
     public String getNamePageTitle() {
-        return driver.findElement(namePageTitle).getText();
+        return driver.getTitle();
+    }
+
+    public  void getFullNamePage(){
+        driver.get("https://app.dev.insurepro.com");
+        driver.findElement(quoteButton).click();
     }
 }
