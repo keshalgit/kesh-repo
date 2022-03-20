@@ -25,7 +25,7 @@ public class ZipCodePageSteps {
 
     @When("insurepro zipcode title should be {string}")
     public void insureproZipcodeTitleShouldBe(String expTitle) {
-        Assert.assertTrue(zipCodePage.getInsureProZipcodePageTitle().contains(expTitle));
+        Assert.assertTrue(title.contains(expTitle));
     }
 
     @And("insurepro zipcode page should contain {string} button")
