@@ -41,4 +41,15 @@ public class JobPage {
     public String getMonthlyJobRatePageTitle() {
         return driver.getTitle();
     }
+
+    public void getJobsPerMonthPage() {
+        driver.get("https://app.dev.insurepro.com");
+        driver.findElement(By.xpath("//*[@id=\"root\"]/section/footer/button")).click();
+        driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/input")).sendKeys("Joe Tribiani");
+        driver.findElement(conBtn).click();
+        driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/input")).sendKeys("33123");
+        driver.findElement(conBtn).click();
+        driver.findElement(houseCleaningBtn).click();
+        driver.findElement(conBtn).click();
+    }
 }
