@@ -3,9 +3,13 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import qa.factory.DriverFactory;
+import qa.util.ConfigReader;
+
+import java.util.Properties;
 
 public class ZipCodePage {
     private WebDriver driver;
+    private Properties prop;
 
     //1. By Locators:
     private By zipcodeTxtBox = By.xpath("//*[@id=\"form\"]/div[3]/div/input");
@@ -13,6 +17,8 @@ public class ZipCodePage {
 
     //2. Constructor of the page class:
     public ZipCodePage(WebDriver driver) {
+        ConfigReader configReader = new ConfigReader();
+        prop = configReader.init_prop();
         this.driver = driver;
     }
 
@@ -47,7 +53,7 @@ public class ZipCodePage {
     }
 
     public void getJobPageForTexas() {
-        driver.get("https://app.dev.insurepro.com");
+        driver.get(prop.getProperty("baseURL"));
         driver.findElement(By.xpath("//*[@id=\"root\"]/section/footer/button")).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/input")).sendKeys("Joe Tribiani");
         driver.findElement(conBtn).click();
@@ -56,7 +62,7 @@ public class ZipCodePage {
     }
 
     public void getJobPageForFlorida() {
-        driver.get("https://app.dev.insurepro.com");
+        driver.get(prop.getProperty("baseURL"));
         driver.findElement(By.xpath("//*[@id=\"root\"]/section/footer/button")).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/input")).sendKeys("Pheebe Buffey");
         driver.findElement(conBtn).click();
