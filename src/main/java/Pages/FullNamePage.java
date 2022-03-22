@@ -3,9 +3,13 @@ package Pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import qa.factory.DriverFactory;
+import qa.util.ConfigReader;
+
+import java.util.Properties;
 
 public class FullNamePage {
     private WebDriver driver;
+    private Properties prop;
 
     //1. By Locators:
     private By fullNameTxtBox = By.xpath("//*[@id=\"form\"]/div[3]/div/input");
@@ -13,6 +17,8 @@ public class FullNamePage {
 
     //2. Constructor of the page class:
     public FullNamePage(WebDriver driver) {
+        ConfigReader configReader = new ConfigReader();
+        prop = configReader.init_prop();
         this.driver = driver;
     }
 
@@ -43,7 +49,7 @@ public class FullNamePage {
     }
 
     public void getZipcodePage() {
-        driver.get("https://app.dev.insurepro.com");
+        driver.get(prop.getProperty("baseURL"));
         driver.findElement(By.xpath("//*[@id=\"root\"]/section/footer/button")).click();
         driver.findElement(fullNameTxtBox).sendKeys("Roy Miller");
         driver.findElement(conBtn).click();
