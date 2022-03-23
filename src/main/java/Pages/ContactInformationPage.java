@@ -9,51 +9,55 @@ import java.util.Collection;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-public class CoverageTypePage {
+public class ContactInformationPage {
     private WebDriver driver;
     private Properties prop;
 
     //1. By Locators:
-    private By generalLiabilityBtn = By.xpath("//*[@id=\"form\"]/div[3]/form/label[1]");
-    private By workersCompBtn = By.xpath("//*[@id=\"form\"]/div[3]/form/label[2]");
-    private By commercialAutoBtn = By.xpath("//*[@id=\"form\"]/div[3]/form/label[3]");
+    private By emailField = By.xpath("//*[@id=\"form\"]/div[3]/div/div[1]/input");
+    private By phoneNumberField = By.xpath("//*[@id=\"form\"]/div[3]/div/div[2]/input");
     private By conBtn = By.cssSelector("#footer > button");
 
     //2. Constructor of the page class:
-    public CoverageTypePage(WebDriver driver) {
+    public ContactInformationPage(WebDriver driver) {
         ConfigReader configReader = new ConfigReader();
         prop = configReader.init_prop();
         this.driver = driver;
     }
 
     //3. Page Actions: features(behavior) of the page the form of methods:
-    public void setInsureProCoverageTypePage() {
-        JobsPerMonthPage jobsPerMonthPage = new JobsPerMonthPage(DriverFactory.getDriver());
-        jobsPerMonthPage.getCoverageTypePageForLessThan10Jobs();
+    public void setInsureProContactInfoPage() {
+        CoverageTypePage coverageTypePage = new CoverageTypePage(DriverFactory.getDriver());
+        coverageTypePage.getContactInformationPageForGL();
     }
 
-    public String getInsureProCoverageTypePageTitle() {
+
+    public String getInsureProContactInfoPageTitle() {
         return driver.getTitle();
     }
 
-    public String getCoverageTypePageContinueButtonText() {
+    public String getContactInfoPageContinueButtonText() {
         return driver.findElement(conBtn).getText();
     }
 
-    public void clickOnACoverageType() {
-        driver.findElement(generalLiabilityBtn).click();
+    public void setEmailAddress(String email) {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS) ;
+        driver.findElement(emailField).sendKeys(email);
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        driver.findElement(phoneNumberField).sendKeys(phoneNumber);
     }
 
     public void clickOnTheContinueButton() {
         driver.findElement(conBtn).click();
     }
 
-    public String getEmailPageTitle() {
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS) ;
+    public String getGeneralOverviewPageTitle() {
         return driver.getTitle();
     }
 
-    public void getContactInformationPageForGL() {
+    public void getGeneralOverviewPageForGL() {
         driver.get(prop.getProperty("baseURL"));
         driver.findElement(By.xpath("//*[@id=\"root\"]/section/footer/button")).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/input")).sendKeys("Joe Tribiani");
@@ -64,11 +68,14 @@ public class CoverageTypePage {
         driver.findElement(conBtn).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/label[1]/span")).click();
         driver.findElement(conBtn).click();
-        driver.findElement(generalLiabilityBtn).click();
+        driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/form/label[1]")).click();
+        driver.findElement(conBtn).click();
+        driver.findElement(emailField).sendKeys("qa@gl.com");
+        driver.findElement(phoneNumberField).sendKeys("0713530513m");
         driver.findElement(conBtn).click();
     }
 
-    public void getContactInformationPageForWC() {
+    public void getGeneralOverviewPageForWC() {
         driver.get(prop.getProperty("baseURL"));
         driver.findElement(By.xpath("//*[@id=\"root\"]/section/footer/button")).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/input")).sendKeys("Joe Tribiani");
@@ -79,11 +86,14 @@ public class CoverageTypePage {
         driver.findElement(conBtn).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/label[1]/span")).click();
         driver.findElement(conBtn).click();
-        driver.findElement(workersCompBtn).click();
+        driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/form/label[2]")).click();
+        driver.findElement(conBtn).click();
+        driver.findElement(emailField).sendKeys("qa@gl.com");
+        driver.findElement(phoneNumberField).sendKeys("0713530513m");
         driver.findElement(conBtn).click();
     }
 
-    public void getContactInformationPageForCA() {
+    public void getGeneralOverviewPageForCA() {
         driver.get(prop.getProperty("baseURL"));
         driver.findElement(By.xpath("//*[@id=\"root\"]/section/footer/button")).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/input")).sendKeys("Joe Tribiani");
@@ -94,7 +104,10 @@ public class CoverageTypePage {
         driver.findElement(conBtn).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/label[1]/span")).click();
         driver.findElement(conBtn).click();
-        driver.findElement(commercialAutoBtn).click();
+        driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/form/label[3]")).click();
+        driver.findElement(conBtn).click();
+        driver.findElement(emailField).sendKeys("qa@gl.com");
+        driver.findElement(phoneNumberField).sendKeys("0713530513m");
         driver.findElement(conBtn).click();
     }
 }

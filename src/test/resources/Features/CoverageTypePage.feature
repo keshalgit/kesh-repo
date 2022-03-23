@@ -1,6 +1,6 @@
 Feature: InsurePro Coverage Type page features
 
-  Scenario: Verify the elements on the Jobs per month page
+  Scenario: Verify the elements on the Coverage Type page
     Given user is on insurepro Coverage Type page
     When user gets the title of the insurepro Coverage Type page
     When insurepro Coverage Type title should be "InsurePro - Coverage Types"
