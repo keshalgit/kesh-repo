@@ -11,8 +11,8 @@ public class InsureProLandingPage {
     private Properties prop;
 
     //1. By Locators:
-    private By languageLink = By.xpath("//*[@id=\"root\"]/section/footer/div/button");
-    private By quoteButton = By.xpath("//*[@id=\"root\"]/section/footer/button");
+    private By languageLink = By.xpath("//*[@id=\"footer\"]/div/button");
+    private By quoteButton = By.xpath("//*[@id=\"footer\"]/button");
 
     //2. Constructor of the page class:
     public InsureProLandingPage(WebDriver driver) {

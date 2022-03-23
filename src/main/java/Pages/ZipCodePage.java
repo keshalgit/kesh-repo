@@ -54,7 +54,7 @@ public class ZipCodePage {
 
     public void getJobPageForTexas() {
         driver.get(prop.getProperty("baseURL"));
-        driver.findElement(By.xpath("//*[@id=\"root\"]/section/footer/button")).click();
+        driver.findElement(By.xpath("//*[@id=\"footer\"]/button")).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/input")).sendKeys("Joe Tribiani");
         driver.findElement(conBtn).click();
         driver.findElement(zipcodeTxtBox).sendKeys("78732");
@@ -63,7 +63,7 @@ public class ZipCodePage {
 
     public void getJobPageForFlorida() {
         driver.get(prop.getProperty("baseURL"));
-        driver.findElement(By.xpath("//*[@id=\"root\"]/section/footer/button")).click();
+        driver.findElement(By.xpath("//*[@id=\"footer\"]/button")).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/input")).sendKeys("Pheebe Buffey");
         driver.findElement(conBtn).click();
         driver.findElement(zipcodeTxtBox).sendKeys("33123");
