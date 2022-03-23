@@ -55,7 +55,7 @@ public class CoverageTypePage {
 
     public void getContactInformationPageForGL() {
         driver.get(prop.getProperty("baseURL"));
-        driver.findElement(By.xpath("//*[@id=\"root\"]/section/footer/button")).click();
+        driver.findElement(By.xpath("//*[@id=\"footer\"]/button")).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/input")).sendKeys("Joe Tribiani");
         driver.findElement(conBtn).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/input")).sendKeys("33123");
@@ -70,7 +70,7 @@ public class CoverageTypePage {
 
     public void getContactInformationPageForWC() {
         driver.get(prop.getProperty("baseURL"));
-        driver.findElement(By.xpath("//*[@id=\"root\"]/section/footer/button")).click();
+        driver.findElement(By.xpath("//*[@id=\"footer\"]/button")).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/input")).sendKeys("Joe Tribiani");
         driver.findElement(conBtn).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/input")).sendKeys("33123");
@@ -85,7 +85,7 @@ public class CoverageTypePage {
 
     public void getContactInformationPageForCA() {
         driver.get(prop.getProperty("baseURL"));
-        driver.findElement(By.xpath("//*[@id=\"root\"]/section/footer/button")).click();
+        driver.findElement(By.xpath("//*[@id=\"footer\"]/button")).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/input")).sendKeys("Joe Tribiani");
         driver.findElement(conBtn).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/input")).sendKeys("33123");

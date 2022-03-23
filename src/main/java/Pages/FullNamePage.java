@@ -50,7 +50,7 @@ public class FullNamePage {
 
     public void getZipcodePage() {
         driver.get(prop.getProperty("baseURL"));
-        driver.findElement(By.xpath("//*[@id=\"root\"]/section/footer/button")).click();
+        driver.findElement(By.xpath("//*[@id=\"footer\"]/button")).click();
         driver.findElement(fullNameTxtBox).sendKeys("Roy Miller");
         driver.findElement(conBtn).click();
     }

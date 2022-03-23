@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import qa.factory.DriverFactory;
 import qa.util.ConfigReader;
 
-import java.util.Collection;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -41,7 +40,6 @@ public class ContactInformationPage {
     }
 
     public void setEmailAddress(String email) {
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS) ;
         driver.findElement(emailField).sendKeys(email);
     }
 
@@ -50,6 +48,7 @@ public class ContactInformationPage {
     }
 
     public void clickOnTheContinueButton() {
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS) ;
         driver.findElement(conBtn).click();
     }
 
@@ -59,7 +58,7 @@ public class ContactInformationPage {
 
     public void getGeneralOverviewPageForGL() {
         driver.get(prop.getProperty("baseURL"));
-        driver.findElement(By.xpath("//*[@id=\"root\"]/section/footer/button")).click();
+        driver.findElement(By.xpath("//*[@id=\"footer\"]/button")).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/input")).sendKeys("Joe Tribiani");
         driver.findElement(conBtn).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/input")).sendKeys("33123");
@@ -71,13 +70,13 @@ public class ContactInformationPage {
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/form/label[1]")).click();
         driver.findElement(conBtn).click();
         driver.findElement(emailField).sendKeys("qa@gl.com");
-        driver.findElement(phoneNumberField).sendKeys("0713530513m");
+        driver.findElement(phoneNumberField).sendKeys("0713530513");
         driver.findElement(conBtn).click();
     }
 
     public void getGeneralOverviewPageForWC() {
         driver.get(prop.getProperty("baseURL"));
-        driver.findElement(By.xpath("//*[@id=\"root\"]/section/footer/button")).click();
+        driver.findElement(By.xpath("//*[@id=\"footer\"]/button")).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/input")).sendKeys("Joe Tribiani");
         driver.findElement(conBtn).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/input")).sendKeys("33123");
@@ -89,13 +88,13 @@ public class ContactInformationPage {
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/form/label[2]")).click();
         driver.findElement(conBtn).click();
         driver.findElement(emailField).sendKeys("qa@gl.com");
-        driver.findElement(phoneNumberField).sendKeys("0713530513m");
+        driver.findElement(phoneNumberField).sendKeys("0713530513");
         driver.findElement(conBtn).click();
     }
 
     public void getGeneralOverviewPageForCA() {
         driver.get(prop.getProperty("baseURL"));
-        driver.findElement(By.xpath("//*[@id=\"root\"]/section/footer/button")).click();
+        driver.findElement(By.xpath("//*[@id=\"footer\"]/button")).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/input")).sendKeys("Joe Tribiani");
         driver.findElement(conBtn).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/input")).sendKeys("33123");
@@ -107,7 +106,7 @@ public class ContactInformationPage {
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/form/label[3]")).click();
         driver.findElement(conBtn).click();
         driver.findElement(emailField).sendKeys("qa@gl.com");
-        driver.findElement(phoneNumberField).sendKeys("0713530513m");
+        driver.findElement(phoneNumberField).sendKeys("0713530513");
         driver.findElement(conBtn).click();
     }
 }

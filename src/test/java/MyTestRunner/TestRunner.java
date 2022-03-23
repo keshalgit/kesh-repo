@@ -55,9 +55,9 @@ public class TestRunner extends AbstractTestNGCucumberTests {
         zipUtils.zipTheFile("test_reports/html_report/", "test_reports/zip/HTML_Report.zip");
     }
 
-    @AfterSuite
-    public void sendResultsJsonToQMetry() throws IOException {
-        QMetryJsonBinder qMetryJsonBinder = new QMetryJsonBinder();
-        qMetryJsonBinder.sendJsonRequest(prop.getProperty("qmetry_apikey"),prop.getProperty("qmetry_projectid"));
-    }
+//    @AfterSuite
+//    public void sendResultsJsonToQMetry() throws IOException {
+//        QMetryJsonBinder qMetryJsonBinder = new QMetryJsonBinder();
+//        qMetryJsonBinder.sendJsonRequest(prop.getProperty("qmetry_apikey"),prop.getProperty("qmetry_projectid"));
+//    }
 }
