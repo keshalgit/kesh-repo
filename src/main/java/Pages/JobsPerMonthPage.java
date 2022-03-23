@@ -49,7 +49,7 @@ public class JobsPerMonthPage {
         return driver.getTitle();
     }
 
-    public void getCoverageTypePageWithLessThan10Jobs() {
+    public void getCoverageTypePageForLessThan10Jobs() {
         driver.get(prop.getProperty("baseURL"));
         driver.findElement(By.xpath("//*[@id=\"root\"]/section/footer/button")).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/input")).sendKeys("Joe Tribiani");
@@ -62,7 +62,7 @@ public class JobsPerMonthPage {
         driver.findElement(conBtn).click();
     }
 
-    public void getCoverageTypePageWithMoreThan10Jobs() {
+    public void getCoverageTypePageForMoreThan10Jobs() {
         driver.get(prop.getProperty("baseURL"));
         driver.findElement(By.xpath("//*[@id=\"root\"]/section/footer/button")).click();
         driver.findElement(By.xpath("//*[@id=\"form\"]/div[3]/div/input")).sendKeys("Joe Tribiani");
