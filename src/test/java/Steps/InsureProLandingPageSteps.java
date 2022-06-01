@@ -28,23 +28,17 @@ public class InsureProLandingPageSteps {
         Assert.assertTrue(title.contains(expTitle));
     }
 
-    @And("insurepro landing page should contain {string} link")
-    public void insureproLandingPageShouldContainLink(String expLanguageLinkText) {
-        Assert.assertTrue(insureProLandingPage.getTheLanguageLinkText().contains(expLanguageLinkText));
+
+    @When("the user enters a valid credentials username{string} password{string}")
+    public void theUserEntersAValidCredentialsUsernamePassword(String username, String password) {
+        insureProLandingPage.enterCredentials(username,password);
     }
 
-    @And("insurepro landing page should contain {string} button")
-    public void insureproLandingPageShouldContainButton(String expQuotBtnName) {
-        Assert.assertTrue(insureProLandingPage.getTheQuoteButtonText().contains(expQuotBtnName));
-    }
+    @Then("click on the login button")
+    public void clickOnTheLoginButton() {
+        insureProLandingPage.clickontheLogin();
 
-    @And("click on the Get A Quote button")
-    public void clickOnTheGetAQuoteButton() {
-        insureProLandingPage.clickOnTheQuoteButton();
-    }
-
-    @Then("user should navigate to the next page and title should be {string}")
-    public void userShouldNavigateToTheNextPageAndTitleShouldBe(String expNxtPgTitle) {
-        Assert.assertTrue(insureProLandingPage.getNamePageTitle().contains(expNxtPgTitle));
     }
 }
+
+

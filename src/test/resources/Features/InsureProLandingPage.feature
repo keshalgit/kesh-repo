@@ -5,12 +5,11 @@ Feature: Test Execution - Sample
   Scenario: Verify the elements on the InsurePro landing page
     Given user is on insurepro landing page
     When user gets the title of the insurepro landing page
-    When insurepro landing page title should be "InsurePro"
-    And insurepro landing page should contain "Continuar en español" link
-    And insurepro landing page should contain "Get a Quote" button
+    When insurepro landing page title should be "Propdata"
+
 
   @TEST_IM-599 @TestCase
-  Scenario: Verify the Get a Quote button
-    Given user is on insurepro landing page
-    And click on the Get A Quote button
-    Then user should navigate to the next page and title should be "InsurePro - Name1"
+    Scenario: User should be able to login with valid credentials
+      Given user is on insurepro landing page
+      When the user enters a valid credentials username"standon" password"sairam1234"
+      Then click on the login button
