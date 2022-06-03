@@ -15,3 +15,11 @@ Feature: Test Execution - Sample
       When the user enters a valid credentials username"resprop" password"resprop"
       When click on the login button
       When user should navigate to the next page and title should be "Properties"
+
+  @TEST_IM-600 @TestCase
+     Scenario: User should not be able to login with invalid credentials
+     Given  user is on insurepro landing page
+     When the user enters a valid credentials username"name" password"name"
+     When click on the login button
+     When user gets title of the validation message
+     Then login failed validation text should be "Unauthorized"

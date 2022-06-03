@@ -18,6 +18,7 @@ public class PropDataLoginPage {
     private By usernameTxt = By.xpath("//*[@id=\"LOGIN_USERNAME_INPUT_FIELD\"]");
     private By passwordTxt = By.xpath("//*[@id=\"LOGIN_PWD_INPUT_FIELD\"]");
     private By loginBtn = By.xpath("//*[@id=\"root\"]/div/div/div/div/div/div/div/div/div/div/div[2]/div[3]/div/div/div/div");
+    private By loginfailText = By.xpath("//*[@id=\"root\"]/div/div/div/div/div/div/div/div/div/div/div[2]/div[2]");
 
 
 
@@ -62,6 +63,22 @@ public class PropDataLoginPage {
 
     }
 
+
+    public void enterInvalidCredentials(String uName, String pass){
+
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.navigate().refresh();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.findElement(usernameTxt).sendKeys(uName);
+        driver.findElement(passwordTxt).sendKeys(pass);
+
+    }
+
+    public String getvalidationTextName() {
+      //driver.findElement(loginfailText).getText();
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        return driver.findElement(loginfailText).getText();
+    }
 
 
 }
