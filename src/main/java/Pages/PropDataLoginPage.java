@@ -68,7 +68,7 @@ public class PropDataLoginPage {
 
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         driver.navigate().refresh();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         driver.findElement(usernameTxt).sendKeys(uName);
         driver.findElement(passwordTxt).sendKeys(pass);
 
@@ -76,7 +76,7 @@ public class PropDataLoginPage {
 
     public String getvalidationTextName() {
       //driver.findElement(loginfailText).getText();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(40, TimeUnit.SECONDS);
         return driver.findElement(loginfailText).getText();
     }
 
