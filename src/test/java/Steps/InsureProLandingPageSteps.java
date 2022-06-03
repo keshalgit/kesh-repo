@@ -37,7 +37,16 @@ public class InsureProLandingPageSteps {
     @Then("click on the login button")
     public void clickOnTheLoginButton() {
         insureProLandingPage.clickontheLogin();
+        System.out.println("Successfully Logged In");
 
+
+    }
+
+    @When("user should navigate to the next page and title should be {string}")
+    public void userShouldNavigateToTheNextPageAndTitleShouldBe(String homepagetitle) {
+       // System.out.println(insureProLandingPage.getPropDataHomePageTitle());
+        System.out.println("Page title is : " + insureProLandingPage.getPropDataHomePageTitle());
+        Assert.assertTrue(insureProLandingPage.getPropDataHomePageTitle().contains(homepagetitle));
     }
 }
 
