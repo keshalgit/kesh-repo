@@ -2,6 +2,8 @@ package Pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import qa.util.ConfigReader;
 
 import java.util.Properties;
@@ -43,6 +45,15 @@ public class InsureProLandingPage {
     }
 
     public void clickontheLogin() {
+
         driver.findElement(loginBtn).click();
+        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS) ;
+
+    }
+
+    public String getPropDataHomePageTitle() {
+        WebDriverWait wait=new WebDriverWait(driver, 50);
+        wait.until(ExpectedConditions.titleIs("Properties"));
+        return driver.getTitle();
     }
 }

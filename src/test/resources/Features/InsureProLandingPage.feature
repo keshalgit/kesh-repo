@@ -12,4 +12,5 @@ Feature: Test Execution - Sample
     Scenario: User should be able to login with valid credentials
       Given user is on insurepro landing page
       When the user enters a valid credentials username"standon" password"sairam1234"
-      Then click on the login button
+      When click on the login button
+      When user should navigate to the next page and title should be "Properties"
