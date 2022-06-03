@@ -1,25 +1,24 @@
 package Steps;
 
-import Pages.InsureProLandingPage;
-import io.cucumber.java.en.And;
+import Pages.PropDataLoginPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.testng.Assert;
 import qa.factory.DriverFactory;
 
-public class InsureProLandingPageSteps {
+public class PropDataLoginPageSteps {
     private static String title;
-    private InsureProLandingPage insureProLandingPage = new InsureProLandingPage(DriverFactory.getDriver());
+    private PropDataLoginPage propdataloginpage = new PropDataLoginPage(DriverFactory.getDriver());
 
     @Given("user is on insurepro landing page")
     public void userIsOnInsureproLandingPage() {
-        DriverFactory.getDriver().get(insureProLandingPage.setInsureProLandingPageURL());
+        DriverFactory.getDriver().get(propdataloginpage.setInsureProLandingPageURL());
     }
 
     @When("user gets the title of the insurepro landing page")
     public void userGetsTheTitleOfTheInsureproLandingPage() {
-        title = insureProLandingPage.getInsureProLandingPageTitle();
+        title = propdataloginpage.getInsureProLandingPageTitle();
         System.out.println("Page title is : " + title);
     }
 
@@ -31,12 +30,14 @@ public class InsureProLandingPageSteps {
 
     @When("the user enters a valid credentials username{string} password{string}")
     public void theUserEntersAValidCredentialsUsernamePassword(String username, String password) {
-        insureProLandingPage.enterCredentials(username,password);
+
+
+        propdataloginpage.enterCredentials(username,password);
     }
 
     @Then("click on the login button")
     public void clickOnTheLoginButton() {
-        insureProLandingPage.clickontheLogin();
+        propdataloginpage.clickontheLogin();
         System.out.println("Successfully Logged In");
 
 
@@ -45,8 +46,8 @@ public class InsureProLandingPageSteps {
     @When("user should navigate to the next page and title should be {string}")
     public void userShouldNavigateToTheNextPageAndTitleShouldBe(String homepagetitle) {
        // System.out.println(insureProLandingPage.getPropDataHomePageTitle());
-        System.out.println("Page title is : " + insureProLandingPage.getPropDataHomePageTitle());
-        Assert.assertTrue(insureProLandingPage.getPropDataHomePageTitle().contains(homepagetitle));
+        System.out.println("Page title is : " + propdataloginpage.getPropDataHomePageTitle());
+        Assert.assertTrue(propdataloginpage.getPropDataHomePageTitle().contains(homepagetitle));
     }
 }
 

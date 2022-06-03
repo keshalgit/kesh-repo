@@ -1,6 +1,7 @@
 package Pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -9,7 +10,7 @@ import qa.util.ConfigReader;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-public class InsureProLandingPage {
+public class PropDataLoginPage {
     private WebDriver driver;
     private Properties prop;
 
@@ -21,7 +22,7 @@ public class InsureProLandingPage {
 
 
     //2. Constructor of the page class:
-    public InsureProLandingPage(WebDriver driver) {
+    public PropDataLoginPage (WebDriver driver) {
         ConfigReader configReader = new ConfigReader();
         prop = configReader.init_prop();
         this.driver = driver;
@@ -38,7 +39,10 @@ public class InsureProLandingPage {
     }
 
     public void enterCredentials(String uName, String pass) {
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS) ;
+
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.navigate().refresh();
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.findElement(usernameTxt).sendKeys(uName);
         driver.findElement(passwordTxt).sendKeys(pass);
 
@@ -55,5 +59,9 @@ public class InsureProLandingPage {
         WebDriverWait wait=new WebDriverWait(driver, 50);
         wait.until(ExpectedConditions.titleIs("Properties"));
         return driver.getTitle();
+
     }
+
+
+
 }
