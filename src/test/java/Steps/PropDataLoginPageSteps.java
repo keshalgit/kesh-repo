@@ -61,7 +61,7 @@ public class PropDataLoginPageSteps {
     @Then("login failed validation text should be {string}")
     public void loginFailedValidationTextShouldBe(String validationtexttitile) {
         Assert.assertTrue(propdataloginpage.getvalidationTextName().contains(validationtexttitile));
-        System.out.println("Login failed and the validation message is : " +loginfailText);
+        System.out.println("Login Validation Message : " +loginfailText);
     }
 }
 
